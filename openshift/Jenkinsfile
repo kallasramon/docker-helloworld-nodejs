@@ -1,0 +1,9 @@
+pipeline {
+  agent any
+  stages {
+    stage 'build'
+    openshiftBuild(buildConfig: 'nodejs-app', showBuildLogs: 'true')
+    stage 'deploy'
+    openshiftDeploy(deploymentConfig: 'nodejs-app')
+  }
+}
